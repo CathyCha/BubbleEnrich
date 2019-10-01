@@ -1,4 +1,4 @@
-# `GSEASummary`
+# `BubbleGSEA`
 
 &nbsp;
 
@@ -23,17 +23,31 @@
 
 ## 1.1 What it is ...
 
+This package creates a bubble graph from a traditional GSEA output to make visualizations of phenotypes more clear for gene set related phenotype detection. 
+
 &nbsp;
 
 ## 1.2 Who needs it ...
+
+
 
 &nbsp;
 
 ## 1.3 How it works ...
 
+Traditional GSEA analysis is run on the gene set and phenotype files and the output is a more visually compelling output. 
+
+
+### Demo 
+
+Using the example dataset provided in the /data folder, we will do a quick run through of how the package works. 
+
+
+
 ----
 
 ## 2 Prerequisites
+
 
 
 ----

@@ -1,7 +1,7 @@
-Package: rpt
+Package: BubbleGSEA
 Type: Package
-Title: R Package Template
-Version: 1.4.0
+Title: Bubble Graph for GSEA 
+Version: 0.1.0
 Date: 2019-09-20
 Authors@R: c(
     person("Yeon Joo", "Cha", email = "cathy.cha@mail.utoronto.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4609-4965"))
