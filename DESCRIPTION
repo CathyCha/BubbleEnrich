@@ -6,10 +6,16 @@ Date: 2019-09-20
 Authors@R: c(
     person("Yeon Joo", "Cha", email = "cathy.cha@mail.utoronto.ca", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-4609-4965"))
     )
-Description: 
-License: file LICENSE
+Description: A Bubble Graph for Enriched Disease Phenotypes from a gene set of interest
+License: MIT + file LICENSE
+Depends: R (>= 3.1.0)
 Encoding: UTF-8
 LazyData: true
-Suggests:
+Suggests: 
     testthat
 RoxygenNote: 6.1.1
+Imports: 
+    clusterProfiler,
+    ggplot2,
+    ggrepel,
+    DOSE
