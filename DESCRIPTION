@@ -1,6 +1,6 @@
-Package: BubbleGSEA
+Package: BubbleEnrich
 Type: Package
-Title: Bubble Graph for GSEA 
+Title: Bubble Graph for enrichment results
 Version: 0.1.0
 Date: 2019-09-20
 Authors@R: c(
