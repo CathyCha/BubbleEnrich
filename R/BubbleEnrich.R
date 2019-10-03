@@ -1,4 +1,4 @@
-# BubbleGSEA.R
+# BubbleEnrich.R
 #'
 #' \code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
 #' bubble graph with bubbles diameters correlated to the significance of the phenotype to the
@@ -6,7 +6,7 @@
 #' to the phenotypic output.
 #'
 #'
-#' @param geneRank - a
+#' @param geneList - a
 #'
 #' @author \href{https://orcid.org/0000-0003-4609-4965}{Cathy Cha} (aut)
 #'
@@ -16,13 +16,13 @@
 #' BubbleEnrich(geneList)
 #' }
 #' @export
-BubbleGSEA <- function(geneList) {
+BubbleEnrich <- function(geneList) {
 
 #We define fold change greater than 2 as DEGs
 geneList <- names(geneList)[abs(geneList)>2]
 
 #load in the DisGeNET annotations for disease to gene
-disgeneAnnot <- load("./data/disgeneAnnot.rda")
+load("./data/disgeneAnnot.rda")
 disease2gene = disgeneAnnot[, c("diseaseId", "geneId")]
 disease2name = disgeneAnnot[, c("diseaseId", "diseaseName")]
 
