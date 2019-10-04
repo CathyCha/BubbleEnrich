@@ -7,15 +7,11 @@
 
 <!-- TOCbelow -->
 1. About this package:<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;1.1. What it is ...<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;1.2. Who needs it ...<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;1.3. How it works ...<br/>
-2. Details ...<br/>
-3. Develop<br/>
-4. Demo<br/>
-5. Things to do:<br/>
-6. Further reading<br/>
-7. Acknowledgements<br/>
+2. Installations<br/>
+3. Overview<br/>
+4. Contributions<br/>
+5. Quick Demo<br/>
+6. Things to do:<br/>
 
 <!-- TOCabove -->
 
@@ -30,7 +26,7 @@ This package creates a bubble graph of disease phenotypes from a gene enrichment
 
 ----
 
-## 2 Installations 
+# 2 Installations 
 
 
 ```{r}
@@ -41,7 +37,7 @@ library("BubbleEnrich")
 
 ----
 
-## 3 Overview
+# 3 Overview
 
 
 Quick visualization of what the idea of the visualization of the package is: 
@@ -53,22 +49,25 @@ Quick visualization of what the idea of the visualization of the package is:
 &nbsp;
 
 
-## 4 Contributions
+# 4 Contributions
 
 Enrichment functions from the clusterProfiler package in bioconductor was used to perform the enrichment analysis and output a enriched set result for the plotting of the bubble graph.
  
  
 Acknowledgment to the DOSE package to for providing the example dataset for the demo of this package. 
 
+Thank you to Professor Boris Steipe for providing a R package template, rpt (https://github.com/hyginn/rpt), for BCB coursework. 
+
+
 &nbsp;
 
 
-## 4 Quick Demo 
+# 5 Quick Demo 
 
 
-#### About the data
+### About the data
 
-###### The example data being used for demo
+##### The example data being used for demo
 
 For gene set enrichment analysis, we need a ranked list of genes. DOSE provides an example dataset geneList which was derived from R package breastCancerMAINZ that contained 200 samples, including 29 samples in grade I, 136 samples in grade II and 35 samples in grade III. We computed the ratios of geometric means of grade III samples versus geometric means of grade I samples. Logarithm of these ratios (base 2) were stored in geneList dataset.
 
@@ -90,7 +89,7 @@ head(geneList)
 &nbsp;
 
 
-###### DisGeNET for gene-disease annotations
+##### DisGeNET for gene-disease annotations
 
 Using the disease to gene annotations from DisGeNET 
 
@@ -121,35 +120,29 @@ http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_ass
 &nbsp;
 
 
-#### Using your own data 
+### Using your own data 
 
-Suppose you are importing your own data from a csv file and the file contains two columns, one for gene ID (no duplicated allowed) and another one for fold change, you can prepare your own geneList via the following command:
+Suppose you are importing your own data from a csv file and the file contains two columns, one for gene ID (no duplicated allowed) and another one for fold change, you can prepare your own geneList with the lines below:
 
 ```{r}
 d <- read.csv(your_csv_file)
-## assume that 1st column is ID
-## 2nd column is fold change
 
-## feature 1: numeric vector
+##numeric vector
 geneList <- d[,2]
 
-## feature 2: named vector
+##named vector
 names(geneList) <- as.character(d[,1])
 
-## feature 3: decreasing order
+##decreasing order
 geneList <- sort(geneList, decreasing = TRUE)
-```
 
-Suppose we define fold change greater than 2 as DEGs:
-
-```{r}
-gene <- names(geneList)[abs(geneList) > 2]
-head(gene)
+##we define fold change greater than 2 as differently expressed genes (DEGs)
+geneList <- names(geneList)[abs(geneList) > 2]
 ```
 
 &nbsp;
 
-#### Visualizations 
+### Visualizations 
 
 
 Running the demo with the example data from above...
@@ -170,33 +163,17 @@ BubbleEnrich(geneList)
 This is a work-in-progress and will be cleaned up. 
 
 
-# 5 Things to do: 
+# 6 Things to do: 
 
 * clean up the contributing genes 
 
-* implement in R shiny so that it can funtion as an interactive applications 
+* implement in R shiny so that it can funtion as an interactive application
     * where user can input their own geneList of interest 
     * change colour 
     * axis of interest 
     * range of pvalue considered important 
 
-
-# 6 Further reading
-
-- The [**R Packages** book](http://r-pkgs.had.co.nz/) 
-- The [**CRAN** manual on writing R-extensions](https://cran.r-project.org/doc/manuals/r-release/R-exts.html)
-- Hornik, K., Murdoch D. and Zeileis, A. (2012) [Who Did What? The Roles of R Package Authors and How to Refer to Them](https://journal.r-project.org/archive/2012-1/RJournal_2012-1_Hornik~et~al.pdf). The R Journal 4:(1) 64-69.
-- [**roxygen2** documentation](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
-- Cyril Chapellier's [**markdown cheatsheet**](https://github.com/tchapi/markdown-cheatsheet/blob/master/README.md) 
-
 &nbsp;
 
-# 7 Acknowledgements
-
-Thank you to Professor Boris Steipe for providing a R package template, rpt (https://github.com/hyginn/rpt), for BCB coursework. 
-
-&nbsp;
-
-&nbsp;
 
 <!-- END -->
