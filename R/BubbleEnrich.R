@@ -37,7 +37,7 @@ g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), siz
   ggplot2::scale_fill_continuous(low = "plum1", high = "purple4") +
   ggplot2::theme_bw() +
   ggplot2::theme(legend.position = "bottom", legend.direction = "horizontal",
-        axis.text.x = element_text(angle=45, hjust = 1)) +
+        axis.text.x = ggplot2::element_text(angle=45, hjust = 1)) +
   ggplot2::labs(fill = "-log(adjusted pvalue)", size = "Set Size") +
   ggrepel::geom_text_repel(ggplot2::aes(x = BgRatio, y = -log(p.adjust), label = strsplit((geneID), split="/")) , size = 2)
 
