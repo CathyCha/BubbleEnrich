@@ -172,10 +172,10 @@ This is a work-in-progress and will be cleaned up.
 &nbsp;
 
 
-#7 Acknowledgement
+# 7 Acknowledgement
 
 Enrichment functions from the clusterProfiler package in bioconductor was used to perform the enrichment analysis and output a enriched set result for the plotting of the bubble graph.
- 
+
  
 Acknowledgment to the DOSE package to for providing the example dataset for the demo of this package. 
 
