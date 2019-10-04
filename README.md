@@ -51,13 +51,17 @@ Quick visualization of what the idea of the visualization of the package is:
 
 # 4 Contributions
 
-Enrichment functions from the clusterProfiler package in bioconductor was used to perform the enrichment analysis and output a enriched set result for the plotting of the bubble graph.
- 
- 
-Acknowledgment to the DOSE package to for providing the example dataset for the demo of this package. 
+The author of this package is Yeon Joo (Cathy) Cha. The function available in this package is: 
 
-Thank you to Professor Boris Steipe for providing a R package template, rpt (https://github.com/hyginn/rpt), for BCB coursework. 
+```{r}
+library("BubbleEnrich")
+lsf.str("package:BubbleEnrich")
+```
 
+* BubbleEnrich 
+
+
+The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <code>enricher()</code> function from <code>clusterProfiler</code> package along with disease to gene annotations from DisGeNET to get enrichment results of the gene set of interest. It also makes use of the ggplot function and the ggrepel package to plot a bubble graph of the enrichment results.
 
 &nbsp;
 
@@ -176,4 +180,16 @@ This is a work-in-progress and will be cleaned up.
 &nbsp;
 
 
+#7 Acknowledgement
+
+Enrichment functions from the clusterProfiler package in bioconductor was used to perform the enrichment analysis and output a enriched set result for the plotting of the bubble graph.
+ 
+ 
+Acknowledgment to the DOSE package to for providing the example dataset for the demo of this package. 
+
+Thank you to Professor Boris Steipe for providing a R package template, rpt (https://github.com/hyginn/rpt), for BCB coursework. 
+
+&nbsp;
+
+&nbsp;
 <!-- END -->
