@@ -22,11 +22,11 @@ geneList <- names(geneList)[abs(geneList)>2]
 
 #load in the DisGeNET annotations for disease to gene
 load("./data/disgeneAnnot.rda")
-diseaseTOgene = disgeneAnnot[, c("diseaseId", "geneId")]
-diseaseTOname = disgeneAnnot[, c("diseaseId", "diseaseName")]
+diseaseTOgene <- disgeneAnnot[, c("diseaseId", "geneId")]
+diseaseTOname <- disgeneAnnot[, c("diseaseId", "diseaseName")]
 
 #enrichment using clusterProfiler's enricher() function
-enrich = clusterProfiler::enricher(geneList, TERM2GENE = diseaseTOgene, TERM2NAME = diseaseTOname)
+enrich <- clusterProfiler::enricher(geneList, TERM2GENE = diseaseTOgene, TERM2NAME = diseaseTOname)
 
 #plot the enrichment results as a bubble plot using ggplot
 g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), size = Count, fill = -log(p.adjust))) +
