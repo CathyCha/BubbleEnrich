@@ -12,6 +12,7 @@
 4. Contributions<br/>
 5. Quick Demo<br/>
 6. Things to do:<br/>
+7. Acknowledgement<br/>
 
 <!-- TOCabove -->
 
