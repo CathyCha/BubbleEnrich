@@ -29,9 +29,9 @@ diseaseTOname = disgeneAnnot[, c("diseaseId", "diseaseName")]
 enrich = clusterProfiler::enricher(geneList, TERM2GENE = diseaseTOgene, TERM2NAME = diseaseTOname)
 
 #plot the enrichment results as a bubble plot using ggplot
-g <- ggplot(enrich[], aes(x=BgRatio, y=-log(p.adjust), size = Count, fill = -log(p.adjust))) +
-  geom_point(shape = 21, alpha=0.3) +
-  scale_size(range = c(.1, 17), name="Count") +
+g <- ggplot(enrich[], aes(x = BgRatio, y = -log(p.adjust), size = Count, fill = -log(p.adjust))) +
+  geom_point(shape = 21, alpha = 0.3) +
+  scale_size(range = c(.1, 17), name = "Count") +
   ggrepel::geom_text_repel(aes(x = BgRatio, y = -log(p.adjust), label = Description), size = 2, point.padding = NA, segment.color = NA) +
   ggtitle("Disease Ontology Enrichment") +
   scale_fill_continuous(low = "plum1", high = "purple4") +
