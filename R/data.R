@@ -1,28 +1,27 @@
 #' Disease to Gene Annotations from DisGeNET
 #'
 #'
-#' @source http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz
+#' @source \url{http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz}
 #'
-#' @format A dataframe with 1548061 rows and 15 columns
+#' @format A dataframe with 1548061 rows and 14 columns
 #' \describe{
-#'  \item{geneID}{}
-#'  \item{geneSymbol}{}
-#'  \item{DSI}{}
-#'  \item{DPI}{}
-#'  \item{diseaseId}{}
-#'  \item{diseaseName}{}
-#'  \item{diseaseType}{}
-#'  \item{diseaseClass}{}
-#'  \item{diseaseSemanticType}{}
-#'  \item{score}{}
-#'  \item{EI}{}
-#'  \item{YearInitial}{}
-#'  \item{YearFinal}{}
-#'  \item{pmid}{}
-#'  \item{source}{}
+#'  \item{geneID}{NCBI Entrez Gene Identifier}
+#'  \item{geneSymbol}{Official Gene Symbol}
+#'  \item{DSI}{The Disease Specificity Index for the gene}
+#'  \item{DPI}{The Disease Pleiotropy Index for the gene}
+#'  \item{diseaseId}{UMLS concept unique identifier}
+#'  \item{diseaseName}{Name of the disease}
+#'  \item{diseaseType}{The DisGeNET disease type: disease, phenotype and group}
+#'  \item{diseaseSemanticType}{The UMLS Semantic Type(s) of the disease}
+#'  \item{score}{DisGENET score for the Gene-Disease association}
+#'  \item{EI}{The Evidence Index for the Gene-Disease association}
+#'  \item{YearInitial}{First time that the Gene-Disease association was reported}
+#'  \item{YearFinal}{Last time that the Gene-Disease association was reported}
+#'  \item{pmid}{Publication reporting the Gene-Disease association}
+#'  \item{source}{Original source reporting the Gene-Disease association}
 #' }
 #' @examples
 #' \dontrun{
 #'  disgeneAnnot
 #' }
-#' "disgeneAnnot"
+"disgeneAnnot"
