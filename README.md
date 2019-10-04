@@ -73,15 +73,7 @@ The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <cod
 
 ##### The example data being used for demo
 
-For gene set enrichment analysis, we need a ranked list of genes. DOSE provides an example dataset geneList which was derived from R package breastCancerMAINZ that contained 200 samples, including 29 samples in grade I, 136 samples in grade II and 35 samples in grade III. We computed the ratios of geometric means of grade III samples versus geometric means of grade I samples. Logarithm of these ratios (base 2) were stored in geneList dataset.
-
-The geneList contains three features:
-
-* numeric vector: fold change or other type of numerical variable
-
-* named vector: every number was named by the corresponding gene ID
-
-* sorted vector: number should be sorted in decreasing order
+For gene set enrichment analysis, we need a ranked list of genes. DOSE provides an example dataset geneList which was derived from R package breastCancerMAINZ that contained 200 samples, including 29 samples in grade I, 136 samples in grade II and 35 samples in grade III.
 
 We can load the sample data into R via:
 
