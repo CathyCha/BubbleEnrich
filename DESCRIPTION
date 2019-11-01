@@ -14,8 +14,8 @@ LazyData: true
 Suggests: 
     testthat
 RoxygenNote: 6.1.1
-Imports: 
+BiocViews: 
     clusterProfiler,
     ggplot2,
     ggrepel,
-    DOSE
+    org.Hs.eg.db
