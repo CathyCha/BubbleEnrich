@@ -18,14 +18,23 @@
 #' @import ggrepel
 #' @import clusterProfiler
 #' @export
-BubbleEnrich <- function(geneList = NULL) {
+BubbleEnrich <- function() {
 #Verify input dataframe
-if(is.null(geneList)) {
-  data(geneList, package="DOSE")
-  geneList <- geneList
-}
+# if(is.null(geneList)) {
+#   # usethis::use_data(geneList, DOSE)
+#   # data(geneList, package="DOSE")
+#   # geneList <- geneList
+#
+#
+#   # data(geneList)
+#   # print(head(geneList))
+#   # geneList <- get("geneList")
+#   # print(head(geneList))
+#
+#   geneList <- BubbleEnrich:::sysdata.rda
+# }
 
-if(is.numeric(geneList) == FALSE) {stop("Input must be of type numerical vector")}
+if (is.numeric(geneList) == FALSE) {stop("Input must be of type numerical vector")}
 
 #sorted in decreasing order
 if (order(geneList, decreasing = FALSE)) {
