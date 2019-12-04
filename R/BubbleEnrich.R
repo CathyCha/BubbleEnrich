@@ -18,35 +18,36 @@
 #' @import ggrepel
 #' @import clusterProfiler
 #' @export
-BubbleEnrich <- function() {
+BubbleEnrich <- function(geneSet = NULL) {
 #Verify input dataframe
-# if(is.null(geneList)) {
-#   # usethis::use_data(geneList, DOSE)
-#   # data(geneList, package="DOSE")
-#   # geneList <- geneList
-#
-#
-#   # data(geneList)
-#   # print(head(geneList))
-#   # geneList <- get("geneList")
-#   # print(head(geneList))
-#
-#   geneList <- BubbleEnrich:::sysdata.rda
-# }
+if(is.null(geneSet)) {
+  # usethis::use_data(geneList, DOSE)
+  # data(geneList, package="DOSE")
+  # geneList <- geneList
 
-if (is.numeric(geneList) == FALSE) {stop("Input must be of type numerical vector")}
+
+  # data(geneList)
+  # print(head(geneList))
+  # geneList <- get("geneList")
+  # print(head(geneList))
+
+  # use internal example data if data is not provided
+  geneSet <- BubbleEnrich:::geneList
+}
+
+if (is.numeric(geneSet) == FALSE) {stop("Input must be of type numerical vector")}
 
 #sorted in decreasing order
-if (order(geneList, decreasing = FALSE)) {
+if (order(geneSet, decreasing = FALSE)) {
   #if it isn't sorted, sort
-  geneList <- sort(geneList, decreasing = TRUE)
+  geneSet <- sort(geneSet, decreasing = TRUE)
 }
 
 #We define fold change greater than 2 as DEGs
-geneList <- names(geneList)[abs(geneList)>2]
+geneSet <- names(geneSet)[abs(geneSet)>2]
 
 #load in the DisGeNET annotations for disease to gene
-load("./data/disgeneAnnot.rda")
+disgeneAnnot <- BubbleEnrich:::disgeneAnnot
 diseaseTOgene <- disgeneAnnot[, c("diseaseId", "geneId")]
 diseaseTOname <- disgeneAnnot[, c("diseaseId", "diseaseName")]
 

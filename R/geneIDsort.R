@@ -17,6 +17,7 @@
 geneIDsort <- function(enrichData){
 
 # load("data/HGNCAnnot.rda");
+HGNCAnnot <- BubbleEnrich:::HGNCAnnot
 
 #split up the geneIDs
 geneIDs <- enrichData@result
