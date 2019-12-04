@@ -12,10 +12,15 @@ Depends: R (>= 3.1.0)
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
-RoxygenNote: 6.1.1
-BiocViews: 
-    clusterProfiler,
-    ggplot2,
-    ggrepel,
+    testthat,
+    knitr,
+    rmarkdown
+biocViews: 
     org.Hs.eg.db
+Imports: 
+    ggplot2,
+    clusterProfiler,
+    ggrepel,
+    shiny,
+    dplyr
+VignetteBuilder: knitr

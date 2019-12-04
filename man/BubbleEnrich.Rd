@@ -4,23 +4,21 @@
 \alias{BubbleEnrich}
 \title{\code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
 bubble graph with bubbles diameters correlated to the significance of the phenotype to the
-gene set and a tree diagram spreading from the bubbles of the specific genes that contribute
-to the phenotypic output.}
+gene set and corresponding genes contributing to the enrichment spreading from the disease bubbles.}
 \usage{
 BubbleEnrich(geneList)
 }
 \arguments{
-\item{geneList}{- a}
+\item{geneList}{- a numeric, named vector, sorted in descending order}
 }
 \description{
 \code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
 bubble graph with bubbles diameters correlated to the significance of the phenotype to the
-gene set and a tree diagram spreading from the bubbles of the specific genes that contribute
-to the phenotypic output.
+gene set and corresponding genes contributing to the enrichment spreading from the disease bubbles.
 }
 \examples{
 \dontrun{
-data(geneList)
+data(geneList, package="DOSE")
 BubbleEnrich(geneList)
 }
 }

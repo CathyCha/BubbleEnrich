@@ -19,7 +19,7 @@
 ----
 
 
-# 1 About this package:
+# Description
 
 This package creates a bubble graph of disease phenotypes from a gene enrichment analysis done on a gene set of interest.
 
@@ -27,7 +27,7 @@ This package creates a bubble graph of disease phenotypes from a gene enrichment
 
 ----
 
-# 2 Installations 
+# Installation
 
 
 ```{r}
@@ -38,7 +38,7 @@ library("BubbleEnrich")
 
 ----
 
-# 3 Overview
+# Overview
 
 
 Quick visualization of what the idea of the visualization of the package is: 
@@ -46,11 +46,49 @@ Quick visualization of what the idea of the visualization of the package is:
 
 ![](./inst/extdata/CHA_Y_A1.png) 
 
+```{r}
+ --BubbleEnrich/
+   |__BubbleEnrich.Rproj
+   |__data/
+      |__disgeneAnnot.rda
+      |__HGNCAnnot.rda
+   |__DESCRIPTION
+   |__inst/
+      |__CITATION
+      |__extdata/
+         |__CHA_Y_A1.png
+         |__Rplot.png
+      |__shiny-scripts/
+         |__app.R
+   |__LICENSE
+   |__LICENSE.md
+   |__man/
+      |__BubbleEnrich.Rd
+      |__BubbleEnrichShiny.Rd
+      |__disgeneAnnot.Rd
+      |__geneIDsort.Rd
+      |__HGNCAnnot.Rd
+      |__userInput.Rd
+   |__NAMESPACE
+   |__R/
+      |__BubbleEnrich.R
+      |__BubbleEnrichShiny.R
+      |__data.R
+      |__geneIDsort.R
+      |__userInput.R
+   |__README.md
+   |__tests/
+      |__testthat.R
+      |__testthat/
+         |__test-BubbleEnrich.R
+   |__vignettes/
+      |__IntroductionBubbleEnrich.Rmd
+```
 
 &nbsp;
 
 
-# 4 Contributions
+# Contributions
 
 The author of this package is Yeon Joo (Cathy) Cha. The function available in this package is: 
 
@@ -67,7 +105,7 @@ The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <cod
 &nbsp;
 
 
-# 5 Quick Demo 
+# Quick Demo 
 
 
 ### About the data
@@ -85,60 +123,6 @@ head(geneList)
 
 &nbsp;
 
-
-##### DisGeNET for gene-disease annotations
-
-Using the disease to gene annotations from DisGeNET 
-
-*Stored in <code>~/BubbleEnrich/data/disgeneAnnot.rda</code>
-
-http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_associations.tsv.gz
-
-```{r}
-> disgeneAnnot <- load("~/BubbleEnrich/data/disgeneAnnot.rda")
-> head(disgeneAnnot)
-  geneId geneSymbol   DSI   DPI diseaseId                   diseaseName diseaseType diseaseClass
-1      1       A1BG 0.857 0.172  C0019209                  Hepatomegaly   phenotype      C06;C23
-2      1       A1BG 0.857 0.172  C0013080                 Down Syndrome     disease      C10;C16
-3      1       A1BG 0.857 0.172  C0036341                 Schizophrenia     disease          F03
-4      1       A1BG 0.857 0.172  C0001418                Adenocarcinoma       group          C04
-5      1       A1BG 0.857 0.172  C0002736 Amyotrophic Lateral Sclerosis     disease      C10;C18
-6      1       A1BG 0.857 0.172  C0017636                  Glioblastoma     disease          C04
-               diseaseSemanticType score EI YearInitial YearFinal     pmid    source
-1                          Finding  0.30 NA        2017      2017 28108177 CTD_human
-2              Disease or Syndrome  0.01  1        2011      2011 21360684    BEFREE
-3 Mental or Behavioral Dysfunction  0.30 NA        2015      2015 25821032 CTD_human
-4               Neoplastic Process  0.01 NA        2008      2008 18706098     LHGDN
-5              Disease or Syndrome  0.01  1        2009      2009 18973555    BEFREE
-6               Neoplastic Process  0.01  1        2014      2014 24096582    BEFREE
-```
-
-
-&nbsp;
-
-
-### Using your own data 
-
-Suppose you are importing your own data from a csv file and the file contains two columns, one for gene ID (no duplicated allowed) and another one for fold change, you can prepare your own geneList with the lines below:
-
-```{r}
-d <- read.csv(your_csv_file)
-
-##numeric vector
-geneList <- d[,2]
-
-##named vector
-names(geneList) <- as.character(d[,1])
-
-##decreasing order
-geneList <- sort(geneList, decreasing = TRUE)
-
-##we define fold change greater than 2 as differently expressed genes (DEGs)
-geneList <- names(geneList)[abs(geneList) > 2]
-```
-
-&nbsp;
-
 ### Visualizations 
 
 
@@ -146,7 +130,7 @@ Running the demo with the example data from above...
 
 
 ```{r}
-data(geneList)
+data(geneList, package="DOSE")
 BubbleEnrich(geneList)
 ```
 
@@ -156,24 +140,56 @@ BubbleEnrich(geneList)
 ![](./inst/extdata/Rplot.png)
 
 
+##### DisGeNET for gene-disease annotations
 
-This is a work-in-progress and will be cleaned up. 
+Using the disease to gene annotations from DisGeNET 
+
+*Stored in <code>~/BubbleEnrich/data/disgeneAnnot.rda</code>
+
+http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_associations.tsv.gz
 
 
-# 6 Things to do: 
+```{r}
+> head(disgeneAnnot)
+  diseaseId geneId                   diseaseName
+1  C0019209      1                  Hepatomegaly
+2  C0013080      1                 Down Syndrome
+3  C0036341      1                 Schizophrenia
+4  C0001418      1                Adenocarcinoma
+5  C0002736      1 Amyotrophic Lateral Sclerosis
+6  C0017636      1                  Glioblastoma
+```
 
-* clean up the contributing genes 
+&nbsp;
 
-* implement in R shiny so that it can funtion as an interactive application
-    * where user can input their own geneList of interest 
-    * change colour 
-    * axis of interest 
-    * range of pvalue considered important 
+##### HGNC for geneID to HGNC symbol annotations
+
+Using the HGNC annotation data to map geneIDs from clusterProfiler to more reader friendly HGNC symbols. 
+
+https://www.genenames.org/cgi-bin/download/custom?col=gd_hgnc_id&col=gd_app_sym&col=gd_app_name&col=gd_status&col=gd_prev_sym&col=gd_aliases&col=gd_pub_chrom_map&col=gd_pub_acc_ids&col=gd_pub_refseq_ids&col=md_eg_id&status=Approved&status=Entry%20Withdrawn&hgnc_dbtag=on&order_by=gd_app_sym_sort&format=text&submit=submit
+
+```{r}
+> head(HGNCAnnot)
+  HGNC.ID Approved.symbol
+1       5            A1BG
+2   37133        A1BG-AS1
+3   24086            A1CF
+4       6           A1S9T
+5       7             A2M
+6   27057         A2M-AS1
+```
+
+### Using your own data 
+
+If you are using your own gene set, it should be numeric csv file. 
+
+
+# References: 
 
 &nbsp;
 
 
-# 7 Acknowledgement
+# Acknowledgement
 
 Enrichment functions from the clusterProfiler package in bioconductor was used to perform the enrichment analysis and output a enriched set result for the plotting of the bubble graph.
 

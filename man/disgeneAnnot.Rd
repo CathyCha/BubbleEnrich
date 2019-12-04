@@ -4,22 +4,11 @@
 \name{disgeneAnnot}
 \alias{disgeneAnnot}
 \title{Disease to Gene Annotations from DisGeNET}
-\format{A dataframe with 1548061 rows and 15 columns
+\format{A dataframe with 1548061 rows and 3 columns
 \describe{
- \item{geneID}{hello}
- \item{geneSymbol}{}
- \item{DSI}{}
- \item{DPI}{}
- \item{diseaseId}{}
- \item{diseaseName}{}
- \item{diseaseType}{}
- \item{diseaseSemanticType}{}
- \item{score}{}
- \item{EI}{}
- \item{YearInitial}{}
- \item{YearFinal}{}
- \item{pmid}{}
- \item{source}{}
+ \item{geneID}{NCBI Entrez Gene Identifier}
+ \item{diseaseId}{UMLS concept unique identifier}
+ \item{diseaseName}{Name of the disease}
 }}
 \source{
 \url{http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz}

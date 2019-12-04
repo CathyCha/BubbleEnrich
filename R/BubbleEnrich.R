@@ -1,4 +1,4 @@
-# BubbleEnrich.R
+#' BubbleEnrich.R
 #'
 #' \code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
 #' bubble graph with bubbles diameters correlated to the significance of the phenotype to the
@@ -11,11 +11,27 @@
 #'
 #' @examples
 #' \dontrun{
-#' data(geneList)
+#' data(geneList, package="DOSE")
 #' BubbleEnrich(geneList)
 #' }
+#' @import ggplot2
+#' @import ggrepel
+#' @import clusterProfiler
 #' @export
-BubbleEnrich <- function(geneList) {
+BubbleEnrich <- function(geneList = NULL) {
+#Verify input dataframe
+if(is.null(geneList)) {
+  data(geneList, package="DOSE")
+  geneList <- geneList
+}
+
+if(is.numeric(geneList) == FALSE) {stop("Input must be of type numerical vector")}
+
+#sorted in decreasing order
+if (order(geneList, decreasing = FALSE)) {
+  #if it isn't sorted, sort
+  geneList <- sort(geneList, decreasing = TRUE)
+}
 
 #We define fold change greater than 2 as DEGs
 geneList <- names(geneList)[abs(geneList)>2]
@@ -27,6 +43,7 @@ diseaseTOname <- disgeneAnnot[, c("diseaseId", "diseaseName")]
 
 #enrichment using clusterProfiler's enricher() function
 enrich <- clusterProfiler::enricher(geneList, TERM2GENE = diseaseTOgene, TERM2NAME = diseaseTOname)
+enrich <- geneIDsort(enrich)
 
 #plot the enrichment results as a bubble plot using ggplot
 g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), size = Count, fill = -log(p.adjust))) +
@@ -37,12 +54,12 @@ g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), siz
   ggplot2::scale_fill_continuous(low = "plum1", high = "purple4") +
   ggplot2::theme_bw() +
   ggplot2::theme(legend.position = "bottom", legend.direction = "horizontal",
-        axis.text.x = ggplot2::element_text(angle=45, hjust = 1)) +
-  ggplot2::labs(fill = "-log(adjusted pvalue)", size = "Set Size") +
-  ggrepel::geom_text_repel(ggplot2::aes(x = BgRatio, y = -log(p.adjust), label = strsplit((geneID), split="/")) , size = 2)
+                 axis.text.x = ggplot2::element_text(angle=45, hjust = 1)) +
+  ggplot2::labs(fill = "-log(adjusted pvalue)", size = "Set Size")
+  # ggrepel::geom_text_repel(ggplot2::aes(x = BgRatio, y = -log(p.adjust), label = geneID), size = 2)
 
-g
+
+return(g)
 }
-
 
 # [END]

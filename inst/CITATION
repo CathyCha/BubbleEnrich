@@ -1,0 +1,12 @@
+citHeader("To cite BubbleEnrich in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "BubbleEnrich: Bubble Graph for Enriched Disease Phenotypes for a Gene Set of Interest"",
+  author   = "Cathy Cha",
+  note     = "Unpublished",
+  year     = "2019",
+  textVersion = paste(
+
+  )
+)

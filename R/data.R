@@ -3,25 +3,30 @@
 #'
 #' @source \url{http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz}
 #'
-#' @format A dataframe with 1548061 rows and 14 columns
+#' @format A dataframe with 1548061 rows and 3 columns
 #' \describe{
 #'  \item{geneID}{NCBI Entrez Gene Identifier}
-#'  \item{geneSymbol}{Official Gene Symbol}
-#'  \item{DSI}{The Disease Specificity Index for the gene}
-#'  \item{DPI}{The Disease Pleiotropy Index for the gene}
 #'  \item{diseaseId}{UMLS concept unique identifier}
 #'  \item{diseaseName}{Name of the disease}
-#'  \item{diseaseType}{The DisGeNET disease type: disease, phenotype and group}
-#'  \item{diseaseSemanticType}{The UMLS Semantic Type(s) of the disease}
-#'  \item{score}{DisGENET score for the Gene-Disease association}
-#'  \item{EI}{The Evidence Index for the Gene-Disease association}
-#'  \item{YearInitial}{First time that the Gene-Disease association was reported}
-#'  \item{YearFinal}{Last time that the Gene-Disease association was reported}
-#'  \item{pmid}{Publication reporting the Gene-Disease association}
-#'  \item{source}{Original source reporting the Gene-Disease association}
 #' }
 #' @examples
 #' \dontrun{
 #'  disgeneAnnot
 #' }
 "disgeneAnnot"
+
+#' geneId to HGNC approved symbol from HGNC
+#'
+#'
+#' @source \url{https://www.genenames.org/cgi-bin/download/custom?col=gd_hgnc_id&col=gd_app_sym&col=gd_app_name&col=gd_status&col=gd_prev_sym&col=gd_aliases&col=gd_pub_chrom_map&col=gd_pub_acc_ids&col=gd_pub_refseq_ids&col=md_eg_id&status=Approved&status=Entry%20Withdrawn&hgnc_dbtag=on&order_by=gd_app_sym_sort&format=text&submit=submit}
+#'
+#' @format A dataframe with 46736 rows and 2 columns
+#' \describe{
+#'  \item{HGNC.ID}{HGNC gene ID}
+#'  \item{Approved.symbol}{HGNC approved gene symbols}
+#' }
+#' @examples
+#' \dontrun{
+#'  HGNCAnnot
+#' }
+"HGNCAnnot"
