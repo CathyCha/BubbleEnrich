@@ -16,7 +16,7 @@
 #' @export
 geneIDsort <- function(enrichData){
 
-load("data/HGNCAnnot.rda");
+# load("data/HGNCAnnot.rda");
 
 #split up the geneIDs
 geneIDs <- enrichData@result
