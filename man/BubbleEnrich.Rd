@@ -26,7 +26,7 @@ BubbleEnrich(geneList)
 \references{
 Guangchuang Yu, Li-Gen Wang, Yanyan Han and Qing-Yu He. clusterProfiler: an R package
 for comparing biological themes among gene clusters. OMICS: A Journal of Integrative
-Biology 2012, 16(5):284-287 \href{https://www.ncbi.nlm.nih.gov/pubmed/22455463}
+Biology 2012, 16(5):284-287
 }
 \author{
 \href{https://orcid.org/0000-0003-4609-4965}{Cathy Cha} (aut)
