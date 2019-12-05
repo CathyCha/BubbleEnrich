@@ -11,7 +11,7 @@
  \item{diseaseName}{Name of the disease}
 }}
 \source{
-\url{http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz}
+\url{http://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz}<br/>
 }
 \usage{
 disgeneAnnot

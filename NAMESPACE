@@ -2,9 +2,12 @@
 
 export(BubbleEnrich)
 export(BubbleEnrichShiny)
+export(colourInput)
 export(geneIDsort)
 export(userInput)
 import(clusterProfiler)
 import(ggplot2)
 import(ggrepel)
 importFrom(shiny,runApp)
+importFrom(utils,data)
+importFrom(utils,read.csv)

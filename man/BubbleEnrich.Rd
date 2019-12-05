@@ -2,25 +2,31 @@
 % Please edit documentation in R/BubbleEnrich.R
 \name{BubbleEnrich}
 \alias{BubbleEnrich}
-\title{\code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
-bubble graph with bubbles diameters correlated to the significance of the phenotype to the
-gene set and corresponding genes contributing to the enrichment spreading from the disease bubbles.}
+\title{Bubble Graph of Disease Phentype Enrichment Results}
 \usage{
-BubbleEnrich(geneList)
+BubbleEnrich(geneList = NULL)
 }
 \arguments{
-\item{geneList}{- a numeric, named vector, sorted in descending order}
+\item{geneList}{A numeric, named vector, sorted in descending order}
+}
+\value{
+A ggplot plot
 }
 \description{
-\code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
-bubble graph with bubbles diameters correlated to the significance of the phenotype to the
-gene set and corresponding genes contributing to the enrichment spreading from the disease bubbles.
+This function gets a ranked gene set of interest with related phenotypes and outputs a
+bubble graph with bubble diameters correlated to the significance of the phenotype to the
+gene set.
 }
 \examples{
 \dontrun{
 data(geneList, package="DOSE")
 BubbleEnrich(geneList)
 }
+}
+\references{
+Guangchuang Yu, Li-Gen Wang, Yanyan Han and Qing-Yu He. clusterProfiler: an R package
+for comparing biological themes among gene clusters. OMICS: A Journal of Integrative
+Biology 2012, 16(5):284-287 \href{https://www.ncbi.nlm.nih.gov/pubmed/22455463}
 }
 \author{
 \href{https://orcid.org/0000-0003-4609-4965}{Cathy Cha} (aut)

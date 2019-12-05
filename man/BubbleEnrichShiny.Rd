@@ -2,7 +2,7 @@
 % Please edit documentation in R/BubbleEnrichShiny.R
 \name{BubbleEnrichShiny}
 \alias{BubbleEnrichShiny}
-\title{Launch the shiny app for package BubbleEnrich}
+\title{shiny app for BubbleEnrich Package}
 \usage{
 BubbleEnrichShiny()
 }

@@ -2,23 +2,23 @@
 % Please edit documentation in R/userInput.R
 \name{userInput}
 \alias{userInput}
-\title{\code{userInput}}
+\title{Helper Function for BubbleEnrich shiny application}
 \usage{
 userInput(geneSet)
 }
 \arguments{
-\item{geneSet}{- string path to the gene set user wants to use, store in a csv file}
+\item{geneSet}{A string path to the gene set user wants to use, stored in a csv file}
 }
 \value{
 a numeric vector sorted in decreasing order with name as geneID and numeric value as fold change
 }
 \description{
-\code{userInput}
+A function that formats a .csv user input of gene set data into a numerical vector in
+decreasing order.
 }
 \examples{
 \dontrun{
-
-numVec <- userInput("")
+numVec <- userInput("/extdata/data.csv")
 }
 
 }

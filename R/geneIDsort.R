@@ -1,23 +1,27 @@
-# geneIDsort.R
+#' Helper Function for BubbleEnrich Function and shiny app
 #'
-#' \code{userInput}
+#' A function that maps HGNC geneIDs to its corresponding HGNC symbol and filers the enrichment
+#' results based on a user defined cut off value.
 #'
 #'
-#' @param enrichData - dataframe of the disease phenotypes with its corresponding geneIDs that contribute to it's enrichment
-#' @return a vector object with phenotype with it's corresponding geneids
+#' @param enrichData A dataframe of the disease phenotypes with its corresponding geneIDs that
+#' contribute to it's enrichment
+#' @param sizeFilter A positive integer that defines the cut off value for enrichment result size
+#' @return a enrichResult object
 #'
 #' @author \href{https://orcid.org/0000-0003-4609-4965}{Cathy Cha} (aut)
 #'
 #' @examples
 #' \dontrun{
-#'
+#' geneIDsort(enrichData, 5)
 #' }
 #'
+#'
 #' @export
-geneIDsort <- function(enrichData){
+geneIDsort <- function(enrichData, sizeFilter){
 
 # load("data/HGNCAnnot.rda");
-HGNCAnnot <- BubbleEnrich:::HGNCAnnot
+# HGNCAnnot <- BubbleEnrich:::HGNCAnnot
 
 #split up the geneIDs
 geneIDs <- enrichData@result
@@ -39,28 +43,17 @@ for (i in 1:nrow(geneIDs)) {
   i = i + 1
 }
 
-#filter data so that only enrichments greater than 10 contributing genes are considered
+if(missing(sizeFilter)){
+ sizeFilter <- 5
+}
+
+#filter data so that only enrichments greater than 5 contributing genes are considered
 #also cleans up enrichments with no HGNC symbol mapping
 #change with shiny later upon input
-idsToRemove <- sapply(geneIDs$geneID, function(i) length(i) > 5)
+idsToRemove <- sapply(geneIDs$geneID, function(i) length(i) > sizeFilter)
 geneIDFilter <- geneIDs[c(idsToRemove),]
 
 enrichData@result <- geneIDFilter
 
 return(enrichData)
-
-# #make a ggrepel line for each gene in the list
-# for (i in 1:nrow(geneIDs)) {
-#
-#   for (j in 0:length(geneIDs$geneID[[i]])) {
-#
-#     j = j + 1
-#   }
-#   i = i + 1
-# }
-#
-# enrich@result <- geneIDs
-# return
 }
-
-# [END]

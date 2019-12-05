@@ -2,23 +2,28 @@
 % Please edit documentation in R/geneIDsort.R
 \name{geneIDsort}
 \alias{geneIDsort}
-\title{\code{userInput}}
+\title{Helper Function for BubbleEnrich Function and shiny app}
 \usage{
-geneIDsort(enrichData)
+geneIDsort(enrichData, sizeFilter)
 }
 \arguments{
-\item{enrichData}{- dataframe of the disease phenotypes with its corresponding geneIDs that contribute to it's enrichment}
+\item{enrichData}{A dataframe of the disease phenotypes with its corresponding geneIDs that
+contribute to it's enrichment}
+
+\item{sizeFilter}{A positive integer that defines the cut off value for enrichment result size}
 }
 \value{
-a vector object with phenotype with it's corresponding geneids
+a enrichResult object
 }
 \description{
-\code{userInput}
+A function that maps HGNC geneIDs to its corresponding HGNC symbol and filers the enrichment
+results based on a user defined cut off value.
 }
 \examples{
 \dontrun{
-
+geneIDsort(enrichData, 5)
 }
+
 
 }
 \author{

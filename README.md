@@ -48,6 +48,9 @@ Quick visualization of what the idea of the visualization of the package is:
 
 ```{r}
  --BubbleEnrich/
+   |__.gitignore
+   |__.Rbuildignore
+   |__.Rhistory
    |__BubbleEnrich.Rproj
    |__data/
       |__disgeneAnnot.rda
@@ -58,6 +61,7 @@ Quick visualization of what the idea of the visualization of the package is:
       |__extdata/
          |__CHA_Y_A1.png
          |__Rplot.png
+         |__shiny.png
       |__shiny-scripts/
          |__app.R
    |__LICENSE
@@ -73,8 +77,10 @@ Quick visualization of what the idea of the visualization of the package is:
    |__R/
       |__BubbleEnrich.R
       |__BubbleEnrichShiny.R
+      |__colourInput.R
       |__data.R
       |__geneIDsort.R
+      |__sysdata.rda
       |__userInput.R
    |__README.md
    |__tests/
@@ -82,6 +88,7 @@ Quick visualization of what the idea of the visualization of the package is:
       |__testthat/
          |__test-BubbleEnrich.R
    |__vignettes/
+      |__.gitignore
       |__IntroductionBubbleEnrich.Rmd
 ```
 
@@ -100,7 +107,7 @@ lsf.str("package:BubbleEnrich")
 * BubbleEnrich 
 
 
-The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <code>enricher()</code> function from <code>clusterProfiler</code> package along with disease to gene annotations from DisGeNET to get enrichment results of the gene set of interest. It also makes use of the ggplot function and the ggrepel package to plot a bubble graph of the enrichment results.
+The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <code>enricher()</code> function from <code>clusterProfiler</code> package along with disease to gene annotations from DisGeNET to get disease phenotype enrichment results of the gene set of interest and HGNC gene id to HGNC symbol annotation. It also makes use of the ggplot function and the ggrepel package to plot a bubble graph of the enrichment results.
 
 &nbsp;
 
@@ -114,30 +121,23 @@ The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <cod
 
 For gene set enrichment analysis, we need a ranked list of genes. DOSE provides an example dataset geneList which was derived from R package breastCancerMAINZ that contained 200 samples, including 29 samples in grade I, 136 samples in grade II and 35 samples in grade III.
 
-We can load the sample data into R via:
-
-```{r}
-data(geneList, package="DOSE")
-head(geneList)
-```
 
 &nbsp;
 
 ### Visualizations 
 
 
-Running the demo with the example data from above...
+Running the demo with the example data as default opens a shiny application...
 
 
 ```{r}
-data(geneList, package="DOSE")
-BubbleEnrich(geneList)
+BubbleEnrichShiny()
 ```
 
-... returns the following visualization 
+... with the following default visualization 
 
 
-![](./inst/extdata/Rplot.png)
+![](./inst/extdata/shiny.png)
 
 
 ##### DisGeNET for gene-disease annotations

@@ -1,11 +1,12 @@
-#' BubbleEnrich.R
+#' Bubble Graph of Disease Phentype Enrichment Results
 #'
-#' \code{BubbleEnrich} gets a ranked gene set of interest with related phenotypes and outputs a
-#' bubble graph with bubbles diameters correlated to the significance of the phenotype to the
-#' gene set and corresponding genes contributing to the enrichment spreading from the disease bubbles.
+#' This function gets a ranked gene set of interest with related phenotypes and outputs a
+#' bubble graph with bubble diameters correlated to the significance of the phenotype to the
+#' gene set.
 #'
 #'
-#' @param geneList - a numeric, named vector, sorted in descending order
+#' @param geneList A numeric, named vector, sorted in descending order
+#' @return A ggplot plot
 #'
 #' @author \href{https://orcid.org/0000-0003-4609-4965}{Cathy Cha} (aut)
 #'
@@ -14,46 +15,35 @@
 #' data(geneList, package="DOSE")
 #' BubbleEnrich(geneList)
 #' }
+#' @references
+#' Guangchuang Yu, Li-Gen Wang, Yanyan Han and Qing-Yu He. clusterProfiler: an R package
+#' for comparing biological themes among gene clusters. OMICS: A Journal of Integrative
+#' Biology 2012, 16(5):284-287 \href{https://www.ncbi.nlm.nih.gov/pubmed/22455463}
+#'
 #' @import ggplot2
 #' @import ggrepel
 #' @import clusterProfiler
 #' @export
-BubbleEnrich <- function(geneSet = NULL) {
+BubbleEnrich <- function(geneList = NULL) {
 #Verify input dataframe
-if(is.null(geneSet)) {
-  # usethis::use_data(geneList, DOSE)
-  # data(geneList, package="DOSE")
-  # geneList <- geneList
-
-
-  # data(geneList)
-  # print(head(geneList))
-  # geneList <- get("geneList")
-  # print(head(geneList))
-
-  # use internal example data if data is not provided
-  geneSet <- BubbleEnrich:::geneList
+if(is.null(geneList)) {
+  # use ovarian example data from DOSE package if geneSet is not supplied
+  geneList <- get(data(geneList, package="DOSE"))
 }
 
-if (is.numeric(geneSet) == FALSE) {stop("Input must be of type numerical vector")}
-
-#sorted in decreasing order
-if (order(geneSet, decreasing = FALSE)) {
-  #if it isn't sorted, sort
-  geneSet <- sort(geneSet, decreasing = TRUE)
-}
+if (is.numeric(geneList) == FALSE) {stop("Input must be of type numerical vector")}
 
 #We define fold change greater than 2 as DEGs
-geneSet <- names(geneSet)[abs(geneSet)>2]
+geneList <- names(geneList)[abs(geneList)>2]
 
 #load in the DisGeNET annotations for disease to gene
-disgeneAnnot <- BubbleEnrich:::disgeneAnnot
+# disgeneAnnot <- BubbleEnrich:::disgeneAnnot
 diseaseTOgene <- disgeneAnnot[, c("diseaseId", "geneId")]
 diseaseTOname <- disgeneAnnot[, c("diseaseId", "diseaseName")]
 
 #enrichment using clusterProfiler's enricher() function
 enrich <- clusterProfiler::enricher(geneList, TERM2GENE = diseaseTOgene, TERM2NAME = diseaseTOname)
-enrich <- geneIDsort(enrich)
+enrich <- geneIDsort(enrich, 5)
 
 #plot the enrichment results as a bubble plot using ggplot
 g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), size = Count, fill = -log(p.adjust))) +
@@ -66,10 +56,6 @@ g <- ggplot2::ggplot(enrich[], ggplot2::aes(x = BgRatio, y = -log(p.adjust), siz
   ggplot2::theme(legend.position = "bottom", legend.direction = "horizontal",
                  axis.text.x = ggplot2::element_text(angle=45, hjust = 1)) +
   ggplot2::labs(fill = "-log(adjusted pvalue)", size = "Set Size")
-  # ggrepel::geom_text_repel(ggplot2::aes(x = BgRatio, y = -log(p.adjust), label = geneID), size = 2)
-
 
 return(g)
 }
-
-# [END]

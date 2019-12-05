@@ -3,7 +3,7 @@
 \docType{data}
 \name{HGNCAnnot}
 \alias{HGNCAnnot}
-\title{geneId to HGNC approved symbol from HGNC}
+\title{HGNC geneId to HGNC symbol annotation data}
 \format{A dataframe with 46736 rows and 2 columns
 \describe{
  \item{HGNC.ID}{HGNC gene ID}
@@ -13,7 +13,7 @@
 HGNCAnnot
 }
 \description{
-geneId to HGNC approved symbol from HGNC
+HGNC geneId to HGNC symbol annotation data
 }
 \examples{
 \dontrun{

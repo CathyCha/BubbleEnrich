@@ -1,5 +1,5 @@
 ---
-title: "IntroductionBubbleEnrich"
+title: "Introduction to BubbleEnrich"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{IntroductionBubbleEnrich}
@@ -14,6 +14,85 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Installation 
+
 ```{r setup}
+require(devtools)
+install_github("CathyCha/BubbleEnrich")
 library(BubbleEnrich)
 ```
+
+## Functions 
+
+### Bubble graph with <code>BubbleEnrich()</code>
+
+The <code>BubbleEnrich(geneList)</code> function returns a bubble graph of an enrichment result of disease phenotypes on a gene set of interest. 
+
+<br>
+
+It takes the universal enrichment analyzer, <code>enricher()</code> function from Guangchuang Yu's <code>clusterProfiler</code> package, and takes the enrichment analysis of the gene set with corresponding disease phenotypes and plots it as a bubble plot. 
+
+<br>
+
+Running the following lines... 
+
+<br>
+
+<code>data(geneList, package="DOSE")</code>
+
+<code>BubbleEnrich(geneList)</code>
+
+<br>
+
+...returns the following bubble graph with -log(p.adjust) as the yaxis and BgRatio as the x axis 
+<br>
+
+![](../inst/extdata/Rplot.png){width=500px}
+
+<br>
+
+For gene set enrichment analysis, we need a ranked list of genes. The DOSE package provides an example dataset geneList which was derived from R package breastCancerMAINZ that contained 200 samples, including 29 samples in grade I, 136 samples in grade II and 35 samples in grade III.
+
+<br>
+
+
+### Interactive version of BubbleEnrich with <code>BubbleEnrichShiny()</code> 
+
+The <code>BubbleEnrichShiny()</code> function run the shiny application with <code>BubbleEnrich()</code> implemented in a user interactive, reactive application. 
+
+<br>
+
+With the shiny application, the user has the ability to: 
+- Input their own gene sets 
+- Define a enrichment cut off for size
+- Change the colour of the low and high pvalues 
+- Click on the plot to display contributing genes 
+
+<br>
+
+![](../inst/extdata/shiny.png){width=500px}
+
+
+## Data 
+
+### DisGeNET for gene-disease annotations 
+
+Disease to gene annotations are from DisGeNET.
+
+```{r}
+head(BubbleEnrich:::disgeneAnnot)
+```
+
+
+
+### HGNC gene id to HGNC symbol annotation
+
+HGNC gene id to HGNC symbol annotations are from HGNC.
+
+```{r}
+head(BubbleEnrich:::HGNCAnnot)
+```
+
+
+
+

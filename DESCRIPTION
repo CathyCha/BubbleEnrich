@@ -1,6 +1,6 @@
 Package: BubbleEnrich
 Type: Package
-Title: Bubble Graph for enrichment results
+Title: Bubble Graph for disease phenotyp enrichment results
 Version: 0.1.0
 Date: 2019-09-20
 Authors@R: c(
@@ -16,7 +16,6 @@ Suggests:
     knitr,
     rmarkdown
 biocViews: 
-    org.Hs.eg.db
 Imports: 
     ggplot2,
     clusterProfiler,
@@ -24,3 +23,4 @@ Imports:
     shiny,
     dplyr
 VignetteBuilder: knitr
+RoxygenNote: 6.1.1
