@@ -100,7 +100,7 @@ Quick visualization of what the idea of the visualization of the package is:
 The author of this package is Yeon Joo (Cathy) Cha. The function available in this package is: 
 
 ```{r}
-library("BubbleEnrich")
+library(BubbleEnrich)
 lsf.str("package:BubbleEnrich")
 ```
 
