@@ -6,13 +6,12 @@
 
 
 <!-- TOCbelow -->
-1. About this package:<br/>
+1. Description:<br/>
 2. Installations<br/>
 3. Overview<br/>
 4. Contributions<br/>
 5. Quick Demo<br/>
-6. Things to do:<br/>
-7. Acknowledgement<br/>
+6. Acknowledgement<br/>
 
 <!-- TOCabove -->
 
@@ -46,6 +45,9 @@ Quick visualization of what the idea of the visualization of the package is:
 
 ![](./inst/extdata/CHA_Y_A1.png) 
 
+&nbsp;
+
+The package tree structure is provided below.
 ```{r}
  --BubbleEnrich/
    |__.gitignore
@@ -105,12 +107,27 @@ lsf.str("package:BubbleEnrich")
 ```
 
 * BubbleEnrich 
+* BubbleEnrichShiny
+* colourInput
+* geneIDsort
+* userInput
 
 
 The function BubbleEnrich was authored by Yeon Joo Cha and makes use of the <code>enricher()</code> function from <code>clusterProfiler</code> package along with disease to gene annotations from DisGeNET to get disease phenotype enrichment results of the gene set of interest and HGNC gene id to HGNC symbol annotation. It also makes use of the ggplot function and the ggrepel package to plot a bubble graph of the enrichment results.
 
 &nbsp;
 
+The function BubbleEnrichShiny is a function to run the shiny app and was taken from BCB410 lecture notes taught by Anjali Silva at UofT. 
+
+&nbsp;
+
+The function geneIDsort was authored by Yeon Joo Cha and uses the HGNC gene id to HGNC symbol annotation data to map geneids in the enrichment result and replaces them with more reader friendly HGNC symbols. 
+
+&nbsp;
+
+The functions colourInput and userInput are authored by Yeon Joo Cha and are helper functions for the BubbleEnrich shiny application. 
+
+&nbsp;
 
 # Quick Demo 
 
@@ -182,11 +199,6 @@ https://www.genenames.org/cgi-bin/download/custom?col=gd_hgnc_id&col=gd_app_sym&
 ### Using your own data 
 
 If you are using your own gene set, it should be numeric csv file. 
-
-
-# References: 
-
-&nbsp;
 
 
 # Acknowledgement
